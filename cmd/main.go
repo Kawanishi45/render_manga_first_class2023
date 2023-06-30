@@ -1,10 +1,12 @@
 package main
 
 import (
-	"github.com/render_manga_api/controller"
-	"github.com/render_manga_api/model/repository"
+	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/render_manga_api/controller"
+	"github.com/render_manga_api/model/repository"
 )
 
 var (
@@ -24,6 +26,7 @@ func main() {
 	}
 	http.HandleFunc("/home", ro.HandleTitlesRequest)
 	http.HandleFunc("/viewer", ro.HandlePagesRequest)
+	fmt.Println("ListenAndServe...")
 	err = server.ListenAndServe()
 	if err != nil {
 		log.Println(err)
